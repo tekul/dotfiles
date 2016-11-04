@@ -1,0 +1,95 @@
+!------------------------------------------------------------------------------
+! Xft settings
+!------------------------------------------------------------------------------
+
+Xft.dpi:       96
+Xft.antialias: true
+Xft.rgba:      rgb
+Xft.hinting:   true
+Xft.hintstyle: hintslight
+
+!------------------------------------------------------------------------------
+! URxvt settings
+!------------------------------------------------------------------------------
+
+URxvt*termName:        rxvt-256color
+URxvt*xftAntialias:    true
+URxvt.geometry:        90x35
+URxvt*.transparent:    false
+URxvt*fading:          0
+! URxvt.urgentOnBell:    true
+URxvt*visualBell:      false
+URxvt*loginShell:      true
+URxvt.saveLines:       2000
+URxvt.internalBorder:  0
+URxvt.lineSpace:       0
+URxvt.intensityStyles: true
+! I don't use any perl extensions (not yet anyway)
+URxvt.perl-ext:
+URxvt.perl-ext-common:
+
+! Fonts
+URxvt.allow_bold:      true
+URxvt*font:            xft:Inconsolata:size=13
+!URxvt*font:            xft:Bitstream Vera Sans Mono:size=10:bold:antialias=true
+! Fix font space
+URxvt*letterSpace:     0
+
+! Scrollbar
+URxvt.scrollBar:       false
+
+! Cursor
+URxvt.cursorBlink:     true
+URxvt.cursorUnderline: false
+
+! Pointer
+URxvt.pointerBlank:    true
+
+! iso 14755 disable
+URxvt*iso14755:        false
+
+!------------------------------------------------------------------------------
+! Colour
+!------------------------------------------------------------------------------
+
+! Zenburnish color-scheme
+URxvt*background: #1c1c1c
+URxvt*foreground: #dcdccc
+!URxvt*cursorColor: #dcdccc
+URxvt*cursorColor: #00d700
+!URxvt*cursorColor2: #ffffef
+URxvt*colorUL: #8cd0d3
+URxvt*underlineColor: #f0dfaf
+URxvt*colorBD: #e0cf9f
+URxvt*colorIT: #656555
+
+!! black dark/light
+URxvt*color0: #3f3f3f
+URxvt*color8: #5f5f5f
+!!! red dark/light
+URxvt*color1: #bc8383
+URxvt*color9: #cc9393
+!
+!!! green dark/light
+URxvt*color2: #5f7f5f
+URxvt*color10: #7f9f7f
+!
+!!! yellow dark/light
+URxvt*color3: #e0cf9f
+URxvt*color11: #f0dfaf
+!
+!!! blue dark/light
+URxvt*color4: #7cb8bb
+URxvt*color12: #8cd0d3
+!
+!!! magenta dark/light
+URxvt*color5: #dc8cc3
+URxvt*color13: #dc8cc3
+!
+!!! cyan dark/light
+URxvt*color6: #93e0e3
+URxvt*color14: #93e0e3
+!
+!! white dark/light
+URxvt*color7: #dcdccc
+URxvt*color15: #ffffff
