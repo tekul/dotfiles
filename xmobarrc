@@ -12,7 +12,7 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "%StdinReader% } %multicpu% | %memory% | %dynnetwork% {  %battery% | %EGPF% | %date% "
+   , template = "%StdinReader% } %multicpu% | %memory% | %dynnetwork% {  %battery% | %date% "
 
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -38,12 +38,13 @@ Config {
    --   see http://projects.haskell.org/xmobar/#system-monitor-plugins.
    , commands =
 
-        -- weather monitor
-        [ Run Weather "EGPF" [ "--template", "<station>: <fc=#4682B4><tempC></fc>°C"
-                             ] 36000
+        [
+        -- weather monitor is broken in xmobar < 0.24.2 since URL changed
+        -- Run Weather "EGPF" [ "--template", "<station>: <fc=#4682B4><tempC></fc>°C"
+        --                     ] 36000
 
         -- network activity monitor (dynamic interface resolution)
-        , Run DynNetwork     [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
+          Run DynNetwork     [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
                              , "--Low"      , "100000"       -- units: kB/s ?? Doesn't seem to be
                              , "--High"     , "500000"       -- units: kB/s
                              , "--low"      , "darkgreen"
