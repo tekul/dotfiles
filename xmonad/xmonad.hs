@@ -15,7 +15,7 @@ main = do
                         , ppTitle = xmobarColor "darkgreen" "" . shorten 50
                         }
         , modMask = mod4Mask
-        , terminal = "urxvt"
+        , terminal = "urxvtc"
         }
         `additionalKeys`
         [ ((mod4Mask, xK_b), sendMessage ToggleStruts)

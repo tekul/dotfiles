@@ -5,6 +5,7 @@ xmodmap ~/.Xmodmap
 
 eval "$(dbus-launch --sh-syntax --exit-with-session)"
 
+urxvtd -q -f -o
 
 fcitx
 
