@@ -19,7 +19,7 @@ main = do
         }
         `additionalKeys`
         [ ((mod4Mask, xK_b), sendMessage ToggleStruts)
-        , ((mod4Mask, xK_s), spawn "emacs24-x")
+        , ((mod4Mask, xK_s), spawn "LC_CTYPE='zh_CN.UTF-8' emacs24-x")
         ]
         `additionalKeysP`
         [ ("<XF86AudioLowerVolume>", spawn "amixer set Headphone 10-")
