@@ -2,9 +2,13 @@ import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.NoBorders (smartBorders)
-import XMonad.Util.Run(spawnPipe)
+import XMonad.StackSet (greedyView)
 import XMonad.Util.EZConfig(additionalKeys, additionalKeysP)
+import XMonad.Util.Run(spawnPipe)
+import XMonad.Util.SpawnOnce (spawnOnce)
 import System.IO
+
+emacsCmd = "LC_CTYPE='zh_CN.UTF-8' emacs24-x"
 
 main = do
     xmproc <- spawnPipe "/usr/bin/xmobar ~/.xmobarrc"
@@ -17,10 +21,14 @@ main = do
                         }
         , modMask = mod4Mask
         , terminal = "urxvtc"
+        , startupHook = do
+            spawnOnce emacsCmd
+            spawnOnce "urxvtc"
         }
         `additionalKeys`
         [ ((mod4Mask, xK_b), sendMessage ToggleStruts)
-        , ((mod4Mask, xK_s), spawn "LC_CTYPE='zh_CN.UTF-8' emacs24-x")
+        , ((mod4Mask, xK_s), spawn emacsCmd)
+        , ((mod4Mask, xK_w), spawnToWorkspace "2" "firefox -new-tab about:blank")
         ]
         `additionalKeysP`
         [ ("<XF86AudioLowerVolume>", spawn "amixer set Headphone 10-")
@@ -30,3 +38,8 @@ main = do
         , ("<XF86AudioMute>", spawn "amixer set Master toggle")
         , ("M-\\", spawn "synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')")
         ]
+
+spawnToWorkspace :: String -> String -> X ()
+spawnToWorkspace workspace program = do
+    spawn program
+    windows $ greedyView workspace
