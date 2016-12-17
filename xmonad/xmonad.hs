@@ -8,7 +8,7 @@ import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.SpawnOnce (spawnOnce)
 import System.IO
 
-emacsCmd = "LC_CTYPE='zh_CN.UTF-8' emacs24-x"
+emacsCmd = "LC_CTYPE='zh_CN.UTF-8' emacs"
 
 main = do
     xmproc <- spawnPipe "/usr/bin/xmobar ~/.xmobarrc"
