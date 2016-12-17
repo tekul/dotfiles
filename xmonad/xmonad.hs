@@ -24,6 +24,7 @@ main = do
         , startupHook = do
             spawnOnce emacsCmd
             spawnOnce "urxvtc"
+        , focusFollowsMouse = False
         }
         `additionalKeys`
         [ ((mod4Mask, xK_b), sendMessage ToggleStruts)
@@ -36,7 +37,6 @@ main = do
         , ("<XF86AudioRaiseVolume>", spawn "amixer set Headphone 10+")
         , ("M-<XF86AudioRaiseVolume>", spawn "amixer set Headphone 3dB+")
         , ("<XF86AudioMute>", spawn "amixer set Master toggle")
-        , ("M-\\", spawn "synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')")
         ]
 
 spawnToWorkspace :: String -> String -> X ()
