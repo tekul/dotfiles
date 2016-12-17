@@ -29,6 +29,7 @@ values."
      ;;         chinese-enable-fcitx t)
      ;; better-defaults
      emacs-lisp
+     elm
      git
      (haskell
       :variables
