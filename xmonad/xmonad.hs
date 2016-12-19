@@ -37,7 +37,15 @@ main = do
         , ("<XF86AudioRaiseVolume>", spawn "amixer set Headphone 10+")
         , ("M-<XF86AudioRaiseVolume>", spawn "amixer set Headphone 3dB+")
         , ("<XF86AudioMute>", spawn "amixer set Master toggle")
+        , ("M-\\", toggleTouchpad)
         ]
+
+toggleTouchpad =
+  let
+    touchpad = "'SynPS/2 Synaptics TouchPad'"
+    newStatus = "$(xinput --list " ++ touchpad ++ " | grep -c disabled)"
+  in
+    spawn $ "xinput --set-prop " ++ touchpad ++ " 'Device Enabled' " ++ newStatus
 
 spawnToWorkspace :: String -> String -> X ()
 spawnToWorkspace workspace program = do
