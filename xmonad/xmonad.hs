@@ -17,7 +17,7 @@ main = do
         , layoutHook = avoidStruts $ smartBorders $ layoutHook def
         , logHook = dynamicLogWithPP xmobarPP
                         { ppOutput = hPutStrLn xmproc
-                        , ppTitle = xmobarColor "darkgreen" "" . shorten 50
+                        , ppTitle = xmobarColor "darkgreen" "" . shorten 60
                         }
         , modMask = mod4Mask
         , terminal = "urxvtc"
@@ -37,6 +37,8 @@ main = do
         , ("<XF86AudioRaiseVolume>", spawn "amixer set Headphone 10+")
         , ("M-<XF86AudioRaiseVolume>", spawn "amixer set Headphone 3dB+")
         , ("<XF86AudioMute>", spawn "amixer set Master toggle")
+        , ("<XF86MonBrightnessUp>"  , spawn "backlight -inc 10")
+        , ("<XF86MonBrightnessDown>", spawn "backlight -dec 10")
         , ("M-\\", toggleTouchpad)
         ]
 

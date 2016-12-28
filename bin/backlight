@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# xbacklight replacement without the x
+
+set -e
+
+brightness="/sys/class/backlight/intel_backlight/brightness"
+
+current=$(cat "$brightness")
+
+new="$current"
+if [ "$1" = "-inc" ]
+then
+    new=$(( current + $2 ))
+fi
+if [ "$1" = "-dec" ]
+then
+    new=$(( current - $2 ))
+fi
+if [ "$1" = "-set" ]
+then
+    new=$2
+fi
+
+echo "$new" | tee "$brightness"
