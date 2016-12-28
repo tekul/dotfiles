@@ -32,10 +32,10 @@ main = do
         , ((mod4Mask, xK_w), spawnToWorkspace "2" "firefox -new-tab about:blank")
         ]
         `additionalKeysP`
-        [ ("<XF86AudioLowerVolume>", spawn "amixer set Headphone 10-")
-        , ("M-<XF86AudioLowerVolume>", spawn "amixer set Headphone 3dB-")
-        , ("<XF86AudioRaiseVolume>", spawn "amixer set Headphone 10+")
-        , ("M-<XF86AudioRaiseVolume>", spawn "amixer set Headphone 3dB+")
+        [ ("<XF86AudioLowerVolume>", spawn "amixer set Master 10-")
+        , ("M-<XF86AudioLowerVolume>", spawn "amixer set Master 3dB-")
+        , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 10+")
+        , ("M-<XF86AudioRaiseVolume>", spawn "amixer set Master 3dB+")
         , ("<XF86AudioMute>", spawn "amixer set Master toggle")
         , ("<XF86MonBrightnessUp>"  , spawn "backlight -inc 10")
         , ("<XF86MonBrightnessDown>", spawn "backlight -dec 10")
