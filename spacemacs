@@ -29,7 +29,9 @@ values."
      ;;         chinese-enable-fcitx t)
      ;; better-defaults
      emacs-lisp
-     elm
+     (elm :variables
+          elm-sort-imports-on-save t
+          elm-format-on-save t)
      git
      (haskell
       :variables
@@ -37,12 +39,15 @@ values."
       haskell-enable-ghc-mod-support nil
       haskell-mode-hindent-style "johann-tibell"
       )
+     html
+     javascript
      markdown
      org
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      ;; spell-checking
+     sql
      syntax-checking
      version-control
      ;; ess
