@@ -1,4 +1,5 @@
 import XMonad
+import XMonad.Config.Desktop
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.NoBorders (smartBorders)
@@ -12,7 +13,7 @@ emacsCmd = "LC_CTYPE='zh_CN.UTF-8' emacs"
 
 main = do
     xmproc <- spawnPipe "/usr/bin/xmobar ~/.xmobarrc"
-    xmonad $ def
+    xmonad $ desktopConfig
         { manageHook = manageDocks <+> manageHook def
         , layoutHook = avoidStruts $ smartBorders $ layoutHook def
         , logHook = dynamicLogWithPP xmobarPP
@@ -27,8 +28,7 @@ main = do
         , focusFollowsMouse = False
         }
         `additionalKeys`
-        [ ((mod4Mask, xK_b), sendMessage ToggleStruts)
-        , ((mod4Mask, xK_s), spawn emacsCmd)
+        [ ((mod4Mask, xK_s), spawn emacsCmd)
         , ((mod4Mask, xK_w), spawnToWorkspace "2" "firefox -new-tab about:blank")
         ]
         `additionalKeysP`
