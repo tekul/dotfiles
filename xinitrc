@@ -2,11 +2,9 @@
 
 xmodmap ~/.Xmodmap
 
-rm ~/.xmonad/xmonad.state
-
 source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
 
-eval $(/usr/bin/gnome-keyring-daemon --start --components=secrets,ssh)
+eval $(/usr/bin/gnome-keyring-daemon --start --components=secrets)
 
 export SSH_AUTH_SOCK
 
@@ -19,4 +17,4 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
 export DefaultIMModule=fcitx
 
-exec /usr/bin/xmonad
+exec ~/.local/bin/xmonad
