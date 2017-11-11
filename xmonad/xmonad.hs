@@ -12,7 +12,7 @@ import System.IO
 emacsCmd = "LC_CTYPE='zh_CN.UTF-8' emacs"
 
 main = do
-    xmproc <- spawnPipe "~/.local/bin/xmobar ~/.xmobarrc"
+    xmproc <- spawnPipe "xmobar ~/.xmobarrc"
     xmonad $ docks $ desktopConfig
         { manageHook = manageDocks <+> manageHook def
         , layoutHook = avoidStruts $ smartBorders $ layoutHook def
