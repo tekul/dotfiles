@@ -6,7 +6,7 @@ in
 {
   haskell = super.haskell // {
     packages = super.haskell.packages // {
-      ghc821 = super.haskell.packages.ghc821.extend ( hpkgs: _hpkgs: {
+      ghc822 = super.haskell.packages.ghc822.extend ( hpkgs: _hpkgs: {
         elm-export = _hpkgs.callCabal2nix "elm-export" ( super.fetchFromGitHub {
           owner  = "tekul";
           repo   = "elm-export";
@@ -14,14 +14,14 @@ in
           sha256 = "12r3mjfy4912vbn75zv9n6rj4kq08hhn78ik2v7jxjfi4i2v3fh6";
         }) {};
         hasql = dontCheck _hpkgs.hasql;
-        rebase = dontCheck _hpkgs.rebase_1_1;
-        rerebase = dontCheck _hpkgs.rerebase_1_1;
+        rebase = dontCheck _hpkgs.rebase_1_1_1;
+        rerebase = dontCheck _hpkgs.rerebase_1_1_2;
         servant-elm = dontCheck _hpkgs.servant-elm;
       });
     };
   };
 
-  haskell-env = self.haskell.packages.ghc821.ghcWithHoogle (pset: with pset; [
+  haskell-env = self.haskell.packages.ghc822.ghcWithHoogle (pset: with pset; [
     aeson
     bytestring
     cabal-install
