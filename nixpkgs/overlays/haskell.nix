@@ -2,6 +2,7 @@ self: super:
 
 let
   dontCheck = super.haskell.lib.dontCheck;
+  jailBreak = super.haskell.lib.doJailBreak;
 in
 {
   haskell = super.haskell // {
@@ -14,8 +15,8 @@ in
           sha256 = "12r3mjfy4912vbn75zv9n6rj4kq08hhn78ik2v7jxjfi4i2v3fh6";
         }) {};
         hasql = dontCheck _hpkgs.hasql;
-        rebase = dontCheck _hpkgs.rebase_1_1_1;
-        rerebase = dontCheck _hpkgs.rerebase_1_1_2;
+        rebase = hpkgs.callHackage "rebase" "1.1" {};
+        rerebase = hpkgs.callHackage "rerebase" "1.1" {};
         servant-elm = dontCheck _hpkgs.servant-elm;
       });
     };
@@ -33,9 +34,9 @@ in
     hasql
     hasql-pool
     hspec
+    http-conduit
     jose-jwt
     monad-logger
-    rollbar
     safe-exceptions
     servant-elm
     servant-server
