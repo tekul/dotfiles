@@ -1,3 +1,8 @@
 #! /bin/bash
-printf '\33]50;%s\007' "xft:Inconsolata:size=$1"
+
+SIZE=$1
+
+[ -z "$SIZE" ] && SIZE=14
+
+printf '\33]50;%s\007' "xft:Inconsolata:size=$SIZE"
 
