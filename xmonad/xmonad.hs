@@ -20,7 +20,7 @@ main = do
                         { ppOutput = hPutStrLn xmproc
                         , ppTitle = xmobarColor "darkgreen" "" . shorten 60
                         }
-        , modMask = mod1Mask
+        , modMask = mod4Mask
         , terminal = "urxvtc"
         , startupHook = do
             spawnOnce emacsCmd
@@ -28,8 +28,8 @@ main = do
         , focusFollowsMouse = False
         }
         `additionalKeys`
-        [ ((mod1Mask, xK_s), spawn emacsCmd)
-        , ((mod1Mask, xK_w), spawnToWorkspace "2" "firefox -new-tab about:blank")
+        [ ((mod4Mask, xK_s), spawn emacsCmd)
+        , ((mod4Mask, xK_w), spawnToWorkspace "2" "firefox -new-tab about:blank")
         ]
         `additionalKeysP`
         [ ("<XF86AudioLowerVolume>", spawn "amixer set Master 10-")
