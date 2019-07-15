@@ -6,7 +6,9 @@ source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
 
 eval $(/usr/bin/gnome-keyring-daemon --start --components=secrets)
 
-export SSH_AUTH_SOCK
+# See https://incenp.org/notes/2015/gnupg-for-ssh-authentication.html
+gpg-connect-agent /bye
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 urxvtd -q -f -o
 
