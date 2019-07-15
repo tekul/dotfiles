@@ -44,7 +44,7 @@ main = do
 
 toggleTouchpad =
   let
-    touchpad = "'SynPS/2 Synaptics TouchPad'"
+    touchpad = "'Synaptics TM3149-002'"
     newStatus = "$(xinput --list " ++ touchpad ++ " | grep -c disabled)"
   in
     spawn $ "xinput --set-prop " ++ touchpad ++ " 'Device Enabled' " ++ newStatus
