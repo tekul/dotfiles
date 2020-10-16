@@ -8,6 +8,7 @@ Xft.rgba:      rgb
 Xft.hinting:   true
 Xft.hintstyle: hintslight
 
+
 !------------------------------------------------------------------------------
 ! URxvt settings
 !------------------------------------------------------------------------------
@@ -30,7 +31,8 @@ URxvt.perl-ext-common:
 
 ! Fonts
 URxvt.allow_bold:      true
-URxvt*font:            xft:Inconsolata:size=13
+URxvt*font:            xft:SauceCodePro Nerd Font Mono:size=14,xft:Symbols Nerd Font
+!URxvt.font: xft:SF Mono:size=12,xft:Inconsolata Nerd Font Mono:size=11
 !URxvt*font:            xft:Bitstream Vera Sans Mono:size=10:bold:antialias=true
 ! Fix font space
 URxvt*letterSpace:     0
@@ -39,6 +41,9 @@ URxvt*letterSpace:     0
 URxvt.scrollBar:       false
 URxvt.keysym.Shift-Up: command:\033]720;1\007
 URxvt.keysym.Shift-Down: command:\033]721;1\007
+
+! Clear scroll-back buffer
+URxvt.keysym.Control-l: command:\033c
 
 ! Cursor
 URxvt.cursorBlink:     true
@@ -53,45 +58,47 @@ URxvt*iso14755:        false
 !------------------------------------------------------------------------------
 ! Colour
 !------------------------------------------------------------------------------
-
 ! Zenburnish color-scheme
-URxvt*background: #1c1c1c
-URxvt*foreground: #dcdccc
-!URxvt*cursorColor: #dcdccc
-URxvt*cursorColor: #00d700
-!URxvt*cursorColor2: #ffffef
-URxvt*colorUL: #8cd0d3
-URxvt*underlineColor: #f0dfaf
-URxvt*colorBD: #e0cf9f
+!urxvt*background: #222222
+!urxvt*foreground: #dcdcdc
+!urxvt*cursorcolor: #dcdccc
+!urxvt*cursorcolor: #00d700
+!urxvt*cursorcolor2: #ffffef
+!urxvt*colorul: #8cd0d3
+!urxvt*underlinecolor: #f0dfaf
+!urxvt*colorBD: #e0cf9f
+!urxvt*colorIT: #656555
+
+URxvt*background: #222222
+URxvt*foreground: #DCDCCC
+URxvt*cursorColor: #DCDCCC
+URxvt*cursorColor2: #3F3F3F
+URxvt*colorUL: #8CD0D3
+URxvt*underlineColor: #F0DFAF
+URxvt*colorBD: #E0CF9F
 URxvt*colorIT: #656555
 
 !! black dark/light
-URxvt*color0: #3f3f3f
-URxvt*color8: #5f5f5f
-!!! red dark/light
-URxvt*color1: #bc8383
-URxvt*color9: #cc9393
-!
-!!! green dark/light
-URxvt*color2: #5f7f5f
-URxvt*color10: #7f9f7f
-!
-!!! yellow dark/light
-URxvt*color3: #e0cf9f
-URxvt*color11: #f0dfaf
-!
-!!! blue dark/light
-URxvt*color4: #7cb8bb
-URxvt*color12: #8cd0d3
-!
-!!! magenta dark/light
-URxvt*color5: #dc8cc3
-URxvt*color13: #dc8cc3
-!
-!!! cyan dark/light
-URxvt*color6: #93e0e3
-URxvt*color14: #93e0e3
-!
+URxvt*color0: #3F3F3F
+URxvt*color8: #5F5F5F
+!! red dark/light
+URxvt*color1: #BC8383
+URxvt*color9: #CC9393
+!! green dark/light
+URxvt*color2: #5F7F5F
+URxvt*color10: #7F9F7F
+!! yellow dark/light
+URxvt*color3: #E0CF9F
+URxvt*color11: #F0DFAF
+!! blue dark/light
+URxvt*color4: #699B9E
+URxvt*color12: #77B0B3
+!! magenta dark/light
+URxvt*color5: #DC8CC3
+URxvt*color13: #DC8CC3
+!! cyan dark/light
+URxvt*color6:  #83D0D3
+URxvt*color14: #83D0E3
 !! white dark/light
-URxvt*color7: #dcdccc
-URxvt*color15: #ffffff
+URxvt*color7: #DCDCCC
+URxvt*color15: #FFFFFF
