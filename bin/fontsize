@@ -4,5 +4,5 @@ SIZE=$1
 
 [ -z "$SIZE" ] && SIZE=14
 
-printf '\33]50;%s\007' "xft:Inconsolata:size=$SIZE"
-
+#printf '\33]50;%s\007' "xft:Inconsolata:size=$SIZE"
+printf '\33]50;%s\007' "xft:SauceCodePro Nerd Font Mono:size=$SIZE,xft:Symbols Nerd Font"
