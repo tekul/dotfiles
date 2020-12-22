@@ -79,6 +79,5 @@ Config { font = "xft:Bitstream Vera Sans Mono:size=10:bold:antialias=true"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% } %multicpu% | %memory% | %dynnetwork% \
-                    \{%battery% | <fc=#ababab>%date%</fc> "
+       , template = "%StdinReader% } %multicpu% | %memory% | %dynnetwork% { %battery% | <fc=#ababab>%date%</fc> "
        }

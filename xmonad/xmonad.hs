@@ -23,7 +23,6 @@ main = do
         , modMask = mod4Mask
         , terminal = "urxvtc"
         , startupHook = do
-            spawnOnce emacsCmd
             spawnOnce "urxvtc"
         , focusFollowsMouse = False
         }
