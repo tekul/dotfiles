@@ -79,41 +79,7 @@ set shortmess+=c
 
 
 " Configure lsp
-" https://github.com/neovim/nvim-lspconfig#rust_analyzer
-lua <<EOF
-
--- nvim_lsp object
-local lspconfig = require'lspconfig'
-local log = require 'vim.lsp.log'
--- log.set_level(2)
-
--- function to attach completion when setting up lsp
-local on_attach = function(client)
-    require'completion'.on_attach(client)
-end
-
--- Enable rust_analyzer
-lspconfig.rust_analyzer.setup({
-  cmd={"rust-analyzer"},
-  on_attach=on_attach,
-  settings = {
-    ["rust-analyzer"] = {
-      cargo = { loadOutDirsFromCheck = true },
-      procMacro = { enable = false },
-      diagnostics = { experimental = false },
-    },
-  }
-})
-
--- Enable diagnostics
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = false,
-    signs = true,
-    update_in_insert = true,
-  }
-)
-EOF
+luafile ~/.config/nvim/lsp-setup.lua
 
 " Code navigation shortcuts
 " as found in :help lsp
