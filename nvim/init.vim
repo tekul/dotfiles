@@ -45,6 +45,9 @@ nnoremap ; :
 let mapleader=' '
 let maplocalleader=' '
 
+" Recording playback
+nnoremap Q @q
+
 " Reload/edit config
 nnoremap <leader>rv :source $MYVIMRC<CR>
 nnoremap <leader>ev :e $MYVIMRC<CR>
@@ -108,8 +111,11 @@ noremap x "_x
 nnoremap <silent> <leader>bb :lua require'telescope.builtin'.buffers{}<CR>
 "nnoremap <silent> <leader>ff :lua require'telescope.builtin'.find_files{}<CR>
 nnoremap <silent> <leader>ff :Files<CR>
-nnoremap <silent> <leader>fg :lua require'telescope.builtin'.git_files{}<CR>
-nnoremap <silent> <leader>fo :lua require'telescope.builtin'.oldfiles{}<CR>
+nnoremap <silent> <leader>fg :GitFiles<CR>
+nnoremap <silent> <leader>rg :Rg<CR>
+nnoremap <silent> <leader>ag :Ag<CR>
+nnoremap <silent> <leader>fo :History<CR>
+nnoremap <silent> <leader>fr :History<CR>
 
 " Configure lsp
 luafile ~/.config/nvim/lsp-setup.lua
