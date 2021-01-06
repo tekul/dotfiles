@@ -23,6 +23,7 @@ Plug 'tjdevries/lsp_extensions.nvim'
 
 " Autocompletion for LSP
 Plug 'nvim-lua/completion-nvim'
+Plug 'vimwiki/vimwiki'
 call plug#end()
 
 
@@ -57,6 +58,10 @@ nnoremap <silent> k gk
 nnoremap <silent> j gj
 nnoremap <silent> 0 g0
 nnoremap <silent> $ g$
+
+" Ctrl-S to save
+inoremap <C-s> <ESC> :w <CR>
+nnoremap <C-s> :w <CR>
 
 " Map F7 and F8 to next/previous buffer
 inoremap <F7> <ESC> :bprev <CR>
@@ -111,6 +116,7 @@ noremap x "_x
 nnoremap <silent> <leader>bb :lua require'telescope.builtin'.buffers{}<CR>
 "nnoremap <silent> <leader>ff :lua require'telescope.builtin'.find_files{}<CR>
 nnoremap <silent> <leader>ff :Files<CR>
+nnoremap <silent> <leader>pf :GitFiles<CR>
 nnoremap <silent> <leader>fg :GitFiles<CR>
 nnoremap <silent> <leader>rg :Rg<CR>
 nnoremap <silent> <leader>ag :Ag<CR>
@@ -162,3 +168,6 @@ nnoremap <silent> <leader>en <cmd>lua vim.lsp.diagnostic.goto_next()<CR>zz
 nnoremap <silent> <Leader>T :lua require'lsp_extensions'.inlay_hints{ prefix = ""}<CR>
 nnoremap <silent> <Leader>tt :lua require'lsp_extensions'.inlay_hints{ only_current_line = true, prefix = "" }<CR>
 
+" Use markdown in vim wiki
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_global_ext = 0
