@@ -8,7 +8,12 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'cespare/vim-toml'
+
+" Colour schemes
 Plug 'arcticicestudio/nord-vim'
+Plug 'morhetz/gruvbox'
+Plug 'jnurmine/Zenburn'
+Plug 'pacha/vem-dark'
 
 " Telescope
 Plug 'nvim-lua/popup.nvim'
@@ -29,7 +34,14 @@ call plug#end()
 
 syntax enable
 filetype plugin indent on
-"set termguicolors
+set termguicolors
+
+"let g:zenburn_high_Contrast = 1
+colorscheme zenburn
+" Override default zenburn dark bg to make it a bit lighter
+hi Normal guifg=#dcdccc guibg=#232323 ctermfg=188 ctermbg=234
+
+"colorscheme vem-dark
 
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 set hidden
@@ -37,9 +49,9 @@ set relativenumber
 set incsearch
 set encoding=utf-8
 
-set undofile            " Use undofile for persistent undo
+" Use undofile for persistent undo
+set undofile
 set undodir=~/.vim
-colorscheme nord
 
 nnoremap ; :
 
