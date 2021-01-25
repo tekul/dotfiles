@@ -29,7 +29,7 @@ main = do
         `additionalKeys`
         [ ((mod4Mask, xK_s), spawn emacsCmd)
         , ((mod4Mask .|. shiftMask, xK_l), spawn "slock")
-        , ((mod4Mask, xK_w), spawnToWorkspace "2" "firefox -new-tab about:blank")
+        , ((mod4Mask, xK_f), spawnToWorkspace "2" "firefox -new-tab about:blank")
         ]
         `additionalKeysP`
         [ ("<XF86AudioLowerVolume>", spawn "amixer set Master 10-")
