@@ -15,11 +15,6 @@ Plug 'morhetz/gruvbox'
 Plug 'jnurmine/Zenburn'
 Plug 'pacha/vem-dark'
 
-" Telescope
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-
 " Common configurations for LSP
 Plug 'neovim/nvim-lspconfig'
 
@@ -33,13 +28,15 @@ call plug#end()
 
 
 syntax enable
+set showmatch
+set matchtime=3
 filetype plugin indent on
 set termguicolors
 
 "let g:zenburn_high_Contrast = 1
 colorscheme zenburn
 " Override default zenburn dark bg to make it a bit lighter
-hi Normal guifg=#dcdccc guibg=#232323 ctermfg=188 ctermbg=234
+hi Normal guifg=#dcdccc guibg=#222222 ctermfg=188 ctermbg=234
 
 "colorscheme vem-dark
 
@@ -57,6 +54,7 @@ nnoremap ; :
 
 let mapleader=' '
 let maplocalleader=' '
+set notimeout
 
 " Recording playback
 nnoremap Q @q
@@ -82,11 +80,13 @@ inoremap <F9> <ESC> :bnext <CR>
 nnoremap <F7> :bp <CR>
 nnoremap <F8> :bn <CR>
 nnoremap <F9> :bn <CR>
+nnoremap <F10> :b# <CR>
 
 " Other buffer navigation using space
 nnoremap <silent> <leader>bn :bn<CR>
 nnoremap <silent> <leader>bp :bp<CR>
 nnoremap <silent> <leader>bd :bd<CR>
+nnoremap <silent> <leader>b# :b#<CR>
 
 " Quickfix list navigation
 nnoremap <silent> <leader>cn :cnext<CR>zz
@@ -123,9 +123,8 @@ nnoremap <silent> <leader>rr :registers<CR>
 " Send deleted chars to 'black hole' register
 noremap x "_x
 
-" Telescope/fzf bindings
-" Telescope pane doesn't scroll properly like fzf so use fzf for files etc
-nnoremap <silent> <leader>bb :lua require'telescope.builtin'.buffers{}<CR>
+" fzf bindings
+nnoremap <silent> <leader>bb :Buffers<CR>
 "nnoremap <silent> <leader>ff :lua require'telescope.builtin'.find_files{}<CR>
 nnoremap <silent> <leader>ff :Files<CR>
 nnoremap <silent> <leader>pf :GitFiles<CR>
