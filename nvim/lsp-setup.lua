@@ -43,3 +43,13 @@ lsp.rust_analyzer.setup {
     capabilities = capabilities,
 }
 
+lsp.elmls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+        elmLS = {
+            disableElmLSDiagnostics = true,
+        }
+    };
+}
+
