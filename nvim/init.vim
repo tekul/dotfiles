@@ -15,6 +15,9 @@ Plug 'morhetz/gruvbox'
 Plug 'jnurmine/Zenburn'
 Plug 'pacha/vem-dark'
 
+" Status line
+Plug 'itchyny/lightline.vim'
+
 " Common configurations for LSP
 Plug 'neovim/nvim-lspconfig'
 
@@ -25,6 +28,10 @@ Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'nvim-lua/completion-nvim'
 " LSP Code action lightbulb
 Plug 'kosayoda/nvim-lightbulb'
+
+" LSP status bar integration
+Plug 'nvim-lua/lsp-status.nvim'
+
 Plug 'vimwiki/vimwiki'
 call plug#end()
 
@@ -35,7 +42,13 @@ set matchtime=3
 filetype plugin indent on
 set termguicolors
 
-"let g:zenburn_high_Contrast = 1
+" Lightline
+source ~/.config/nvim/lightline.vim
+
+"let g:gruvbox_contrast_dark='hard'
+"colorscheme gruvbox
+
+let g:zenburn_high_Contrast = 1
 colorscheme zenburn
 " Override default zenburn dark bg to make it a bit lighter
 hi Normal guifg=#dcdccc guibg=#222222 ctermfg=188 ctermbg=234
@@ -188,3 +201,5 @@ nnoremap <silent> <Leader>tt :lua require'lsp_extensions'.inlay_hints{ only_curr
 " Use markdown in vim wiki
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_global_ext = 0
+
+

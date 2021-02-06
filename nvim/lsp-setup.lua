@@ -1,11 +1,20 @@
 local lsp = require'lspconfig'
+local lsp_status = require('lsp-status')
 local completion = require'completion'
+
 -- local log = require 'vim.lsp.log'
 -- log.set_level(2)
+
+lsp_status.register_progress()
+lsp_status.config({
+    status_symbol = '',
+    spinner_frames = { '-', '\\', '|', '/' },
+})
 
 -- function to attach completion when setting up lsp
 local on_attach = function(client)
     completion.on_attach(client)
+    lsp_status.on_attach(client)
 end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -19,6 +28,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
 lsp.rust_analyzer.setup {
     on_attach=on_attach,
+    capabilities = lsp_status.capabilities,
     settings = {
         ["rust-analyzer"] = {
             assist = {
@@ -53,6 +63,7 @@ lsp.rust_analyzer.setup {
 
 lsp.elmls.setup {
     on_attach = on_attach,
+    capabilities = lsp_status.capabilities,
     settings = {
         elmLS = {
             disableElmLSDiagnostics = true,
