@@ -23,6 +23,8 @@ Plug 'tjdevries/lsp_extensions.nvim'
 
 " Autocompletion for LSP
 Plug 'nvim-lua/completion-nvim'
+" LSP Code action lightbulb
+Plug 'kosayoda/nvim-lightbulb'
 Plug 'vimwiki/vimwiki'
 call plug#end()
 
@@ -150,6 +152,10 @@ nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 " re-mapped `gd` to definition
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 "nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+
+" Show lightbulb if code action is available
+lua vim.fn.sign_define('LightBulbSign', { text = "", texthl = "", linehl="", numhl="" })
+autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
 
 " trigger code actions. Note that ga is the standard  shortcut
 " for showing char codes at cursor.
