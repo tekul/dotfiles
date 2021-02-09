@@ -4,6 +4,7 @@ call plug#begin('~/.vim/plugged')
 let g:plug_url_format = 'git@github.com:%s.git'
 
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
@@ -41,6 +42,9 @@ set showmatch
 set matchtime=3
 filetype plugin indent on
 set termguicolors
+set signcolumn=yes
+set number
+set scrolloff=10
 
 " Lightline
 source ~/.config/nvim/lightline.vim
@@ -178,9 +182,6 @@ nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
 imap <tab> <Plug>(completion_smart_tab)
 imap <s-tab> <Plug>(completion_smart_s_tab)
 
-" have a fixed column for the diagnostics to appear in
-" this removes the jitter when warnings/errors flow in
-" set signcolumn=yes
 
 " Set updatetime for CursorHold
 " 300ms of no cursor movement to trigger CursorHold

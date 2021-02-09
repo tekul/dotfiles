@@ -7,6 +7,15 @@ local completion = require'completion'
 
 lsp_status.register_progress()
 lsp_status.config({
+    kind_labels = {},
+    current_function = false,
+    indicator_separator = ' ',
+    indicator_errors = '',
+    indicator_warnings = '',
+    indicator_info = '',
+    indicator_hint = '!',
+    indicator_ok = '',
+    select_symbol = nil,
     status_symbol = '',
     spinner_frames = { '-', '\\', '|', '/' },
 })

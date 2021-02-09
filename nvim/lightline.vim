@@ -5,6 +5,7 @@ let g:lightline = {
       \ 'colorscheme': 'seoul256',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch' ],
       \             [ 'readonly', 'filename' ],
       \             [ 'lsp' ]],
       \   'right': [['lineinfo'], ['percent'], ['charvaluehex', 'fileformat', 'fileencoding', 'filetype']]
@@ -12,11 +13,17 @@ let g:lightline = {
       \ 'component_function': {
       \   'filename': 'LightlineFilename',
       \   'lsp': 'LspStatus',
+      \   'gitbranch': 'LightLineBranch',
       \ },
       \ 'component': {
       \   'charvaluehex': '0x%B'
       \ },
       \ }
+
+function! LightLineBranch()
+    let _ = fugitive#head()
+    return strlen(_) ? ' '._ : ''
+endfunction
 
 function! LightlineFilename()
     let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
