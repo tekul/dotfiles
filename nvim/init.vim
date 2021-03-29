@@ -43,16 +43,15 @@ set matchtime=3
 filetype plugin indent on
 set termguicolors
 set signcolumn=yes
-set number
 set scrolloff=10
+set list
 
 " Lightline
 source ~/.config/nvim/lightline.vim
-
 "let g:gruvbox_contrast_dark='hard'
 "colorscheme gruvbox
 
-let g:zenburn_high_Contrast = 1
+"let g:zenburn_high_Contrast = 1
 colorscheme zenburn
 " Override default zenburn dark bg to make it a bit lighter
 hi Normal guifg=#dcdccc guibg=#222222 ctermfg=188 ctermbg=234
@@ -62,12 +61,13 @@ hi Normal guifg=#dcdccc guibg=#222222 ctermfg=188 ctermbg=234
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 set hidden
 set relativenumber
+"set number
 set incsearch
 set encoding=utf-8
 
 " Use undofile for persistent undo
 set undofile
-set undodir=~/.vim
+set undodir=~/.vim/undodir
 
 nnoremap ; :
 
@@ -75,18 +75,23 @@ let mapleader=' '
 let maplocalleader=' '
 set notimeout
 
+" Show whitespace, line numbers
+nnoremap <leader>ll :set invlist<CR>
+nnoremap <leader>nn :set invnumber<CR>
+nnoremap <leader>rn :set invrelativenumber<CR>
+
 " Recording playback
-nnoremap Q @q
+noremap Q @q
 
 " Reload/edit config
 nnoremap <leader>rv :source $MYVIMRC<CR>
 nnoremap <leader>ev :e $MYVIMRC<CR>
 
 " Better moving around wrapped lines
-nnoremap <silent> k gk
-nnoremap <silent> j gj
-nnoremap <silent> 0 g0
-nnoremap <silent> $ g$
+" nnoremap <silent> k gk
+" nnoremap <silent> j gj
+" nnoremap <silent> 0 g0
+" nnoremap <silent> $ g$
 
 " Ctrl-S to save
 inoremap <C-s> <ESC> :w <CR>
@@ -110,10 +115,13 @@ nnoremap <silent> <leader>b# :b#<CR>
 " Quickfix list navigation
 nnoremap <silent> <leader>cn :cnext<CR>zz
 nnoremap <silent> <leader>cp :cprev<CR>zz
+nnoremap <silent> <leader>cf :cfirst<CR>zz
+nnoremap <silent> <leader>cl :clast<CR>zz
+nnoremap <silent> ]q :cnext<CR>zz
+nnoremap <silent> [q :cprev<CR>zz
+nnoremap <silent> [Q :cfirst<CR>zz
+nnoremap <silent> ]Q :clast<CR>zz
 
-" Location list navigation
-nnoremap <silent> <leader>ln :lnext<CR>zz
-nnoremap <silent> <leader>lp :lprev<CR>zz
 
 " Strip trailing whitespace
 nnoremap <silent> <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
@@ -128,6 +136,7 @@ nnoremap <leader>v V`]
 
 " Alternative escape
 inoremap jk <ESC>
+vnoremap jk <ESC>
 inoremap jj <ESC>
 
 " Set completeopt to have a better completion experience
@@ -157,12 +166,15 @@ nnoremap <silent> <leader>fr :History<CR>
 luafile ~/.config/nvim/lsp-setup.lua
 
 " Code navigation shortcuts as found in :help lsp
-nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+" This overwrites the mapping for jumping to a tag in help files
+" so an alternative is needed.
+"nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <silent> gR    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 " rust-analyzer does not yet support goto declaration
@@ -171,7 +183,7 @@ nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 "nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 
 " Show lightbulb if code action is available
-lua vim.fn.sign_define('LightBulbSign', { text = "", texthl = "", linehl="", numhl="" })
+lua vim.fn.sign_define('LightBulbSign', { text = "", texthl = "GitGutterAdd", linehl="", numhl="" })
 autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
 
 " trigger code actions. Note that ga is the standard  shortcut
@@ -185,7 +197,7 @@ imap <s-tab> <Plug>(completion_smart_s_tab)
 
 " Set updatetime for CursorHold
 " 300ms of no cursor movement to trigger CursorHold
-set updatetime=300
+set updatetime=400
 " Show diagnostic popup on cursor hover
 autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
 
@@ -202,5 +214,4 @@ nnoremap <silent> <Leader>tt :lua require'lsp_extensions'.inlay_hints{ only_curr
 " Use markdown in vim wiki
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_global_ext = 0
-
 
