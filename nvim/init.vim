@@ -3,6 +3,7 @@ call plug#begin('~/.vim/plugged')
 
 let g:plug_url_format = 'git@github.com:%s.git'
 
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf'
@@ -33,6 +34,10 @@ Plug 'kosayoda/nvim-lightbulb'
 " LSP status bar integration
 Plug 'nvim-lua/lsp-status.nvim'
 
+"Snippet support
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 Plug 'vimwiki/vimwiki'
 call plug#end()
 
@@ -43,7 +48,7 @@ set matchtime=3
 filetype plugin indent on
 set termguicolors
 set signcolumn=yes
-set scrolloff=10
+"set scrolloff=10
 set list
 
 " Lightline
@@ -126,7 +131,7 @@ nnoremap <silent> ]Q :clast<CR>zz
 " Strip trailing whitespace
 nnoremap <silent> <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
-autocmd FileType rust,haskell,java,vim,git,html,vim autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType rust,haskell,java,git,html,vim autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " Turn off search highlighting (gets turned back on when searching)
 nnoremap <silent> <Leader>/ :noh<cr>
@@ -141,6 +146,7 @@ inoremap jj <ESC>
 
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noinsert,noselect
+let g:completion_enable_snippet = 'UltiSnips'
 
 " Avoid showing extra messages when using completion
 set shortmess+=c
@@ -173,14 +179,17 @@ nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gr    <cmd>lua vim.lsp.buf.rename()<CR>
-nnoremap <silent> gR    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> gR    <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 " rust-analyzer does not yet support goto declaration
 " re-mapped `gd` to definition
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 "nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+
+" Formatting
+nnoremap <silent> <leader>F <cmd>lua vim.lsp.buf.formatting()<CR>
 
 " Show lightbulb if code action is available
 lua vim.fn.sign_define('LightBulbSign', { text = "", texthl = "GitGutterAdd", linehl="", numhl="" })
