@@ -147,6 +147,11 @@ inoremap jj <ESC>
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noinsert,noselect
 let g:completion_enable_snippet = 'UltiSnips'
+let g:completion_chain_complete_list = [
+    \{'complete_items': ['lsp', 'snippet']},
+    \{'mode': '<c-p>'},
+    \{'mode': '<c-n>'}
+\]
 
 " Avoid showing extra messages when using completion
 set shortmess+=c
@@ -198,6 +203,10 @@ autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
 " trigger code actions. Note that ga is the standard  shortcut
 " for showing char codes at cursor.
 nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
+
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Use tab for completion
 imap <tab> <Plug>(completion_smart_tab)
