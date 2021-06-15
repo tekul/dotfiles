@@ -26,19 +26,19 @@ Plug 'neovim/nvim-lspconfig'
 " Extentions to LSP, providing type inlay hints
 Plug 'tjdevries/lsp_extensions.nvim'
 
-" Autocompletion for LSP
-Plug 'nvim-lua/completion-nvim'
 " LSP Code action lightbulb
 Plug 'kosayoda/nvim-lightbulb'
 
 " LSP status bar integration
 Plug 'nvim-lua/lsp-status.nvim'
 
-"Snippet support
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Autocompletion and snippets
+Plug 'hrsh7th/nvim-compe'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'rafamadriz/friendly-snippets'
 
 Plug 'vimwiki/vimwiki'
+
 call plug#end()
 
 
@@ -144,16 +144,7 @@ inoremap jk <ESC>
 vnoremap jk <ESC>
 inoremap jj <ESC>
 
-" Set completeopt to have a better completion experience
-set completeopt=menuone,noinsert,noselect
-let g:completion_enable_snippet = 'UltiSnips'
-let g:completion_chain_complete_list = [
-    \{'complete_items': ['lsp', 'snippet']},
-    \{'mode': '<c-p>'},
-    \{'mode': '<c-n>'}
-\]
-
-" Avoid showing extra messages when using completion
+ " Avoid showing extra messages when using completion
 set shortmess+=c
 
 "Show registers
@@ -172,6 +163,17 @@ nnoremap <silent> <leader>rg :Rg<CR>
 nnoremap <silent> <leader>ag :Ag<CR>
 nnoremap <silent> <leader>fo :History<CR>
 nnoremap <silent> <leader>fr :History<CR>
+
+" Configure compe
+set completeopt=menuone,noselect
+
+luafile ~/.config/nvim/completion.lua
+
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
 " Configure lsp
 luafile ~/.config/nvim/lsp-setup.lua
@@ -203,15 +205,6 @@ autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
 " trigger code actions. Note that ga is the standard  shortcut
 " for showing char codes at cursor.
 nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
-
-" Use <Tab> and <S-Tab> to navigate through popup menu
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" Use tab for completion
-imap <tab> <Plug>(completion_smart_tab)
-imap <s-tab> <Plug>(completion_smart_s_tab)
-
 
 " Set updatetime for CursorHold
 " 300ms of no cursor movement to trigger CursorHold

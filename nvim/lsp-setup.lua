@@ -1,6 +1,5 @@
 local lsp = require'lspconfig'
 local lsp_status = require('lsp-status')
-local completion = require'completion'
 
 -- local log = require 'vim.lsp.log'
 -- log.set_level(2)
@@ -20,14 +19,14 @@ lsp_status.config({
     spinner_frames = { '-', '\\', '|', '/' },
 })
 
--- function to attach completion when setting up lsp
-local on_attach = function(client)
-    if client.config.flags then
-        client.config.flags.allow_incremental_sync = true
-    end
-    completion.on_attach(client)
-    lsp_status.on_attach(client)
-end
+-- -- function to attach completion when setting up lsp
+-- local on_attach = function(client)
+--     if client.config.flags then
+--         client.config.flags.allow_incremental_sync = true
+--     end
+--     completion.on_attach(client)
+--     lsp_status.on_attach(client)
+-- end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
