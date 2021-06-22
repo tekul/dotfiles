@@ -23,4 +23,4 @@ alias tpon='xinput --set-prop "Synaptics TM3149-002" "Device Enabled" 0'
 alias tpoff='xinput --set-prop "Synaptics TM3149-002" "Device Enabled" 0'
 alias jcurl='curl -H "Content-Type: application/json"'
 alias print_colours='for x in {0..8}; do for i in {30..37}; do for a in {40..47}; do echo -ne "\e[$x;$i;$a""m\\\e[$x;$i;$a""m\e[0;37;40m "; done; echo; done; done; echo ""'
-
+alias rdb='rust-gdb --quiet'
