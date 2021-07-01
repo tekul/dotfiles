@@ -60,6 +60,8 @@ source ~/.config/nvim/lightline.vim
 colorscheme zenburn
 " Override default zenburn dark bg to make it a bit lighter
 hi Normal guifg=#dcdccc guibg=#222222 ctermfg=188 ctermbg=234
+" Make bracket matching more visible
+hi MatchParen ctermbg=188 ctermfg=234 guibg=#555555 guifg=NONE
 
 "colorscheme vem-dark
 
@@ -144,7 +146,7 @@ inoremap jk <ESC>
 vnoremap jk <ESC>
 inoremap jj <ESC>
 
- " Avoid showing extra messages when using completion
+" Avoid showing extra messages when using completion
 set shortmess+=c
 
 "Show registers
