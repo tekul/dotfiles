@@ -12,6 +12,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'cespare/vim-toml'
+Plug 'phaazon/hop.nvim'
 
 " Colour schemes
 Plug 'arcticicestudio/nord-vim'
@@ -135,6 +136,16 @@ nnoremap <silent> <leader>ll :lopen<CR>zz
 nnoremap <silent> <leader>ln :lnext<CR>zz
 nnoremap <silent> <leader>lp :lprev<CR>zz
 
+" Hop
+lua require'hop'.setup()
+nnoremap <silent><C-w> :HopWord<CR>
+nnoremap <C-c> :HopChar1<CR>
+nnoremap <silent><leader>cc :HopChar1<CR>
+nnoremap <silent><leader>hl :HopLine<CR>
+hi HopNextKey guifg=#f8ff38
+hi HopNextKey1 guifg=#ffc038
+hi HopNextKey2 guifg=#f8ff38
+
 " Strip trailing whitespace
 nnoremap <silent> <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
@@ -221,7 +232,7 @@ nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
 
 " Set updatetime for CursorHold
 " 300ms of no cursor movement to trigger CursorHold
-set updatetime=400
+set updatetime=300
 " Show diagnostic popup on cursor hover
 autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false })
 
