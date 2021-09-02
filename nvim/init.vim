@@ -6,6 +6,8 @@ let g:plug_url_format = 'git@github.com:%s.git'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-obsession'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
@@ -83,7 +85,7 @@ let maplocalleader=' '
 set notimeout
 
 " Show whitespace, line numbers
-nnoremap <leader>ll :set invlist<CR>
+nnoremap <leader>il :set invlist<CR>
 nnoremap <leader>nn :set invnumber<CR>
 nnoremap <leader>rn :set invrelativenumber<CR>
 
@@ -119,7 +121,7 @@ nnoremap <silent> <leader>bp :bp<CR>
 nnoremap <silent> <leader>bd :bd<CR>
 nnoremap <silent> <leader>b# :b#<CR>
 
-" Quickfix list navigation
+" Quickfix/Local list navigation
 nnoremap <silent> <leader>cn :cnext<CR>zz
 nnoremap <silent> <leader>cp :cprev<CR>zz
 nnoremap <silent> <leader>cf :cfirst<CR>zz
@@ -129,6 +131,9 @@ nnoremap <silent> [q :cprev<CR>zz
 nnoremap <silent> [Q :cfirst<CR>zz
 nnoremap <silent> ]Q :clast<CR>zz
 
+nnoremap <silent> <leader>ll :lopen<CR>zz
+nnoremap <silent> <leader>ln :lnext<CR>zz
+nnoremap <silent> <leader>lp :lprev<CR>zz
 
 " Strip trailing whitespace
 nnoremap <silent> <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
@@ -196,6 +201,12 @@ nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 " re-mapped `gd` to definition
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 "nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+"
+augroup locallist
+    autocmd!
+    " Populate locallist with lsp diagnostics automatically
+    autocmd User LspDiagnosticsChanged :lua vim.lsp.diagnostic.set_loclist({open_loclist = false})
+augroup END
 
 " Formatting
 nnoremap <silent> <leader>F <cmd>lua vim.lsp.buf.formatting()<CR>
@@ -212,7 +223,7 @@ nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
 " 300ms of no cursor movement to trigger CursorHold
 set updatetime=400
 " Show diagnostic popup on cursor hover
-autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+"autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
 
 " Goto previous/next diagnostic warning/error
 nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>zz
