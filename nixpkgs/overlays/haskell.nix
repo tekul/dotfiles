@@ -1,5 +1,6 @@
 self: super:
 
+/* Note that jailbreaking doesn't work with deps that condional on flags */
 let
   dontCheck = super.haskell.lib.dontCheck;
   jailbreak = super.haskell.lib.doJailbreak;
@@ -29,12 +30,11 @@ in
     /* servant-elm = dontCheck _hpkgs.servant-elm; */
     hasql = dontCheck _hpkgs.hasql;
     hasql-pool = dontCheck _hpkgs.hasql-pool;
-    /* hakyll = dontCheck (jailbreak _hpkgs.hakyll); */
     pandoc = dontCheck _hpkgs.pandoc;
     /* pandoc-citeproc = hpkgs.callHackage "pandoc-citeproc" "0.11.1.3" {}; */
     reroute = dontCheck _hpkgs.reroute;
     binary-parser = dontCheck _hpkgs.binary-parser;
-    text-builder = dontCheck _hpkgs.text-builder;
+    /* text-builder = dontCheck _hpkgs.text-builder; */
     bytestring-strict-builder = dontCheck _hpkgs.bytestring-strict-builder;
     /* postgresql-binary = dontCheck _hpkgs.postgresql-binary; */
   };
@@ -57,6 +57,7 @@ in
     doctest
     errors
     either
+    haskell-language-server
     hasql
     hasql-pool
     hspec
