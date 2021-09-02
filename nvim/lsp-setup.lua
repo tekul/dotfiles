@@ -82,3 +82,12 @@ lsp.elmls.setup {
     };
 }
 
+lsp.hls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+        languageServerHaskell = {
+            formatOnImportOn = false,
+        },
+    };
+}
