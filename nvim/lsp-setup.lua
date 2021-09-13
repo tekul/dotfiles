@@ -37,6 +37,8 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     }
 )
 
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {focusable = false})
+
 lsp.rust_analyzer.setup {
     on_attach=on_attach,
     capabilities = lsp_status.capabilities,

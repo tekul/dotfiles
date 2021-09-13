@@ -223,13 +223,13 @@ nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
 " 300ms of no cursor movement to trigger CursorHold
 set updatetime=400
 " Show diagnostic popup on cursor hover
-"autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false })
 
 " Goto previous/next diagnostic warning/error
 nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>zz
 nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>zz
-nnoremap <silent> <leader>ep <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>zz
-nnoremap <silent> <leader>en <cmd>lua vim.lsp.diagnostic.goto_next()<CR>zz
+nnoremap <silent> <leader>ep <cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts = { focusable = false } })<CR>zz
+nnoremap <silent> <leader>en <cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = { focusable = false } })<CR>zz
 
 " Enable type inlay hints
 nnoremap <silent> <Leader>T :lua require'lsp_extensions'.inlay_hints{ prefix = ""}<CR>
