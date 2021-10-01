@@ -10,6 +10,10 @@ eval $(/usr/bin/gnome-keyring-daemon --start --components=secrets)
 gpg-connect-agent /bye
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
+# Allow us to toggle between key layouts easily depending on what
+# keyboard is being used.
+setxkbmap -layout gb,us -option grp:shifts_toggle
+
 urxvtd -q -f -o
 
 fcitx
