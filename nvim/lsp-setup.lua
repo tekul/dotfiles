@@ -19,14 +19,13 @@ lsp_status.config({
     spinner_frames = { '-', '\\', '|', '/' },
 })
 
--- -- function to attach completion when setting up lsp
--- local on_attach = function(client)
---     if client.config.flags then
---         client.config.flags.allow_incremental_sync = true
---     end
---     completion.on_attach(client)
---     lsp_status.on_attach(client)
--- end
+-- function to attach completion when setting up lsp
+local on_attach = function(client)
+    -- if client.config.flags then
+    --     client.config.flags.allow_incremental_sync = true
+    -- end
+    -- lsp_status.on_attach(client)
+end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -39,9 +38,12 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {focusable = false})
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
 lsp.rust_analyzer.setup {
     on_attach=on_attach,
-    capabilities = lsp_status.capabilities,
+    capabilities = capabilities,
     settings = {
         ["rust-analyzer"] = {
             assist = {
@@ -76,7 +78,7 @@ lsp.rust_analyzer.setup {
 
 lsp.elmls.setup {
     on_attach = on_attach,
-    capabilities = lsp_status.capabilities,
+    capabilities = capabilities,
     settings = {
         elmLS = {
             disableElmLSDiagnostics = false,
