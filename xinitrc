@@ -2,7 +2,12 @@
 
 xmodmap ~/.Xmodmap
 
-source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
+if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+ for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+  [ -x "$f" ] && . "$f"
+ done
+ unset f
+fi
 
 eval $(/usr/bin/gnome-keyring-daemon --start --components=secrets)
 
@@ -12,7 +17,10 @@ export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 # Allow us to toggle between key layouts easily depending on what
 # keyboard is being used.
-setxkbmap -layout gb,us -option grp:shifts_toggle
+# Note that fcitx may also be controlling the keymap (see .config/fcitx/profile).
+setxkbmap -layout us,gb -option grp:shifts_toggle
+
+nvidia-settings --load-config-only &
 
 urxvtd -q -f -o
 
@@ -23,4 +31,5 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
 export DefaultIMModule=fcitx
 
-exec xmonad
+#exec xmonad
+exec dbus-launch leftwm
