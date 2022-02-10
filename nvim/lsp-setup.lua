@@ -60,6 +60,7 @@ lsp.rust_analyzer.setup {
             },
 
             checkOnSave = {
+                command = "clippy",
                 allFeatures = true,
             },
 

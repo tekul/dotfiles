@@ -145,7 +145,8 @@ nnoremap <silent> <leader>lp :lprev<CR>zz
 
 " Hop
 lua require'hop'.setup()
-nnoremap <silent><C-w> :HopWord<CR>
+" Conflicts with wincmd
+"nnoremap <silent><C-w> :HopWord<CR>
 nnoremap <C-c> :HopChar1<CR>
 nnoremap <silent><leader>cc :HopChar1<CR>
 nnoremap <silent><leader>hl :HopLine<CR>
@@ -235,7 +236,7 @@ nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
 " 300ms of no cursor movement to trigger CursorHold
 set updatetime=300
 " Show diagnostic popup on cursor hover
-autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false })
+autocmd CursorHold * lua vim.diagnostic.open_float({focusable = false })
 
 " Goto previous/next diagnostic warning/error
 nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>zz
