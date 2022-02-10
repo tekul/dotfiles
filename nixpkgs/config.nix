@@ -1,8 +1,5 @@
 {
-  allowBroken = true;
-
-  substituters = https://cache.nixos.org https://static-haskell-nix.cachix.org;
-  trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= static-haskell-nix.cachix.org-1:Q17HawmAwaM1/BfIxaEDKAxwTOyRVhPG5Ji9K3+FvUU=;
+  /* allowBroken = true; */
 
   packageOverrides = super: let self = super.pkgs; in
   {
@@ -13,5 +10,17 @@
         });
       };
     };
+
+    /* nix-env -f "<nixpkgs>" -iA myHaskellEnv
+      (or -u for upgrade?)
+     */
+    myHaskellEnv = self.haskellPackages.ghcWithHoogle
+                    (haskellPackages: with haskellPackages; [
+      bytestring
+      cabal-install
+      xmonad
+      xmonad-extras
+      xmobar
+    ]);
   };
 }
