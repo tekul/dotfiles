@@ -245,8 +245,9 @@ nnoremap <silent> <leader>ep <cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts 
 nnoremap <silent> <leader>en <cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = { focusable = false } })<CR>zz
 
 " Enable type inlay hints
-nnoremap <silent> <Leader>T :lua require'lsp_extensions'.inlay_hints{ prefix = ""}<CR>
-nnoremap <silent> <Leader>tt :lua require'lsp_extensions'.inlay_hints{ only_current_line = true, prefix = "" }<CR>
+hi TypeInlayHints guifg=#777777
+nnoremap <silent> <Leader>T :lua require'lsp_extensions'.inlay_hints{ highlight = "TypeInlayHints", prefix = ""}<CR>
+nnoremap <silent> <Leader>tt :lua require'lsp_extensions'.inlay_hints{ highlight = "TypeInlayHints", only_current_line = true, prefix = "" }<CR>
 
 " Use markdown in vim wiki
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
