@@ -35,6 +35,9 @@ Plug 'kosayoda/nvim-lightbulb'
 " LSP status bar integration
 Plug 'nvim-lua/lsp-status.nvim'
 
+"Pairs for brackets etc.
+Plug 'windwp/nvim-autopairs'
+
 " Autocompletion and snippets
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -197,6 +200,8 @@ luafile ~/.config/nvim/completion.lua
 
 " Configure lsp
 luafile ~/.config/nvim/lsp-setup.lua
+
+luafile ~/.config/nvim/nvim-autopairs.lua
 
 " Code navigation shortcuts as found in :help lsp
 " This overwrites the mapping for jumping to a tag in help files
