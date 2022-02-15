@@ -244,10 +244,10 @@ set updatetime=300
 autocmd CursorHold * lua vim.diagnostic.open_float({focusable = false })
 
 " Goto previous/next diagnostic warning/error
-nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>zz
-nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>zz
-nnoremap <silent> <leader>ep <cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts = { focusable = false } })<CR>zz
-nnoremap <silent> <leader>en <cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = { focusable = false } })<CR>zz
+nnoremap <silent> g[ <cmd>lua vim.diagnostic.goto_prev()<CR>zz
+nnoremap <silent> g] <cmd>lua vim.diagnostic.goto_next()<CR>zz
+nnoremap <silent> <leader>ep <cmd>lua vim.diagnostic.goto_prev({ popup_opts = { focusable = false } })<CR>zz
+nnoremap <silent> <leader>en <cmd>lua vim.diagnostic.goto_next({ popup_opts = { focusable = false } })<CR>zz
 
 " Enable type inlay hints
 hi TypeInlayHints guifg=#777777
