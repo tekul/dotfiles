@@ -44,7 +44,7 @@ key = "p"
 
 [[keybind]]
 command = "Execute"
-value = "urxvt"
+value = "urxvtc"
 modifier = ["modkey", "Shift"]
 key = "Return"
 

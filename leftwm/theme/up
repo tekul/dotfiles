@@ -23,3 +23,7 @@ leftwm-command "LoadTheme $SCRIPTPATH/theme.toml"
 hsetroot -solid '#222222'
 
 polybar &
+
+urxvtc &
+urxvtc &
+
