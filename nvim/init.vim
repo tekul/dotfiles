@@ -120,10 +120,8 @@ nnoremap <C-s> :w <CR>
 " Map F7 and F8 to next/previous buffer
 inoremap <F7> <ESC> :bprev <CR>
 inoremap <F8> <ESC> :bnext <CR>
-inoremap <F9> <ESC> :bnext <CR>
 nnoremap <F7> :bp <CR>
 nnoremap <F8> :bn <CR>
-nnoremap <F9> :bn <CR>
 nnoremap <F10> :b# <CR>
 
 " Other buffer navigation using space
@@ -183,6 +181,10 @@ nnoremap <silent> <leader>rr :registers<CR>
 noremap x "_x
 
 " fzf bindings
+" Use Tab, Shift-Tab to select matches
+" Alt-a to select all
+" Enter to open in current window, Ctrl-V in vsplit etc.
+" Selection will be opened in the quickfix list
 nnoremap <silent> <leader>bb :Buffers<CR>
 "nnoremap <silent> <leader>ff :lua require'telescope.builtin'.find_files{}<CR>
 nnoremap <silent> <leader>ff :Files<CR>
