@@ -21,7 +21,7 @@ let g:lightline = {
       \ }
 
 function! LightLineBranch()
-    let _ = fugitive#head()
+    let _ = FugitiveHead()
     return strlen(_) ? ' '._ : ''
 endfunction
 
