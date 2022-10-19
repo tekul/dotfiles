@@ -230,7 +230,7 @@ augroup locallist
 augroup END
 
 " Formatting
-nnoremap <silent> <leader>F <cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap <silent> <leader>F <cmd>lua vim.lsp.buf.format({ async = false })<CR>
 
 " Show lightbulb if code action is available
 lua vim.fn.sign_define('LightBulbSign', { text = "", texthl = "GitGutterAdd", linehl="", numhl="" })
