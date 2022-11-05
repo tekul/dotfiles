@@ -10,6 +10,10 @@ disable_current_tag_swap = false
 focus_behaviour = "ClickTo"
 focus_new_windows = true
 
+window_rules = [
+  {window_class = "pinentry-gtk-2", spawn_floating = true},
+]
+
 [[keybind]]
 command = "Execute"
 value = "polybar-msg cmd toggle"
