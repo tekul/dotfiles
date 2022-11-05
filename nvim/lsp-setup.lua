@@ -36,19 +36,35 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     }
 )
 
+-- Send diagnostics to qflist
+do
+    local default_handler = vim.lsp.handlers["textDocument/publishDiagnostics"]
+    vim.lsp.handlers["textDocument/publishDiagnostics"] = function(err, method, result, client_id, bufnr, config)
+        default_handler(err, method, result, client_id, bufnr, config)
+
+        local diagnostics = vim.diagnostic.get()
+
+        local qflist = vim.diagnostic.toqflist(diagnostics)
+        qflist.open = false
+        vim.diagnostic.setqflist(qflist)
+    end
+end
+
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {focusable = false})
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 lsp.rust_analyzer.setup {
     on_attach=on_attach,
     capabilities = capabilities,
     settings = {
         ["rust-analyzer"] = {
-            assist = {
-                importMergeBehaviour = "full",
-                importPrefix = "plain",
+            imports = {
+                granularity = {
+                    group = "crate",
+                },
+                prefix = "self",
             },
 
             callInfo = {

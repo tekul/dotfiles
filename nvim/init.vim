@@ -223,11 +223,6 @@ nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 "nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 "
-augroup locallist
-    autocmd!
-    " Populate locallist with lsp diagnostics automatically
-    autocmd User LspDiagnosticsChanged :lua vim.lsp.diagnostic.set_loclist({open_loclist = false})
-augroup END
 
 " Formatting
 nnoremap <silent> <leader>F <cmd>lua vim.lsp.buf.format({ async = false })<CR>
