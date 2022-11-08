@@ -64,6 +64,12 @@ set signcolumn=yes
 "set scrolloff=10
 set list
 
+" Jump between and show matching pairs for < and >
+set mps+=<:>
+
+" Ignore certain files and paths by default
+set wildignore+=*/node_modules/*,*/venv/*,*/target/*
+
 " Lightline
 source ~/.config/nvim/lightline.vim
 "let g:gruvbox_contrast_dark='hard'
