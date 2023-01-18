@@ -44,9 +44,14 @@ do
 
         local diagnostics = vim.diagnostic.get()
 
-        local qflist = vim.diagnostic.toqflist(diagnostics)
-        qflist.open = false
-        vim.diagnostic.setqflist(qflist)
+        if
+            #diagnostics > 0
+            --#vim.diagnostic.get(nil, { severity = vim.diagnostic.severity.ERROR }) > 0
+        then
+            local qflist = vim.diagnostic.toqflist(diagnostics)
+            qflist.open = false
+            vim.diagnostic.setqflist(qflist)
+        end
     end
 end
 

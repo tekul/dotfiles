@@ -141,6 +141,7 @@ nnoremap <silent> <leader>cn :cnext<CR>zz
 nnoremap <silent> <leader>cp :cprev<CR>zz
 nnoremap <silent> <leader>cf :cfirst<CR>zz
 nnoremap <silent> <leader>cl :clast<CR>zz
+nnoremap <silent> <leader>cc :call setqflist([])<CR>:cclose<CR>zz
 nnoremap <silent> ]q :cnext<CR>zz
 nnoremap <silent> [q :cprev<CR>zz
 nnoremap <silent> [Q :cfirst<CR>zz
@@ -155,7 +156,7 @@ lua require'hop'.setup()
 " Conflicts with wincmd
 "nnoremap <silent><C-w> :HopWord<CR>
 nnoremap <C-c> :HopChar1<CR>
-nnoremap <silent><leader>cc :HopChar1<CR>
+nnoremap <silent><leader>hc :HopChar1<CR>
 nnoremap <silent><leader>hl :HopLine<CR>
 hi HopNextKey guifg=#f8ff38
 hi HopNextKey1 guifg=#ffc038
@@ -237,7 +238,7 @@ nnoremap <silent> <leader>F <cmd>lua vim.lsp.buf.format({ async = false })<CR>
 lua vim.fn.sign_define('LightBulbSign', { text = "", texthl = "GitGutterAdd", linehl="", numhl="" })
 autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
 
-" trigger code actions. Note that ga is the standard  shortcut
+" trigger code actions. Note that ga is the standard shortcut
 " for showing char codes at cursor.
 nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
 
