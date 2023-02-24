@@ -9,11 +9,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-eval $(/usr/bin/gnome-keyring-daemon --start --components=secrets)
-
-# See https://incenp.org/notes/2015/gnupg-for-ssh-authentication.html
-gpg-connect-agent /bye
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
+export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK
 
 # Allow us to toggle between key layouts easily depending on what
 # keyboard is being used.
@@ -31,5 +28,7 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
 export DefaultIMModule=fcitx
 
+dunst &
+
 #exec xmonad
-exec dbus-launch leftwm
+exec leftwm
