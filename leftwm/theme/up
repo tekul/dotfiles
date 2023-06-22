@@ -24,6 +24,5 @@ hsetroot -solid '#222222'
 
 polybar &
 
-urxvtc &
-urxvtc &
+urxvtc -e fish &
 

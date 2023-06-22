@@ -60,7 +60,7 @@ key = "p"
 
 [[keybind]]
 command = "Execute"
-value = "urxvtc"
+value = "urxvtc -e /usr/bin/fish"
 modifier = ["modkey", "Shift"]
 key = "Return"
 
@@ -89,11 +89,6 @@ key = "l"
 [[keybind]]
 command = "MoveToLastWorkspace"
 modifier = ["modkey", "Shift"]
-key = "w"
-
-[[keybind]]
-command = "SwapTags"
-modifier = ["modkey"]
 key = "w"
 
 [[keybind]]
@@ -135,6 +130,11 @@ key = "j"
 command = "FocusWorkspaceNext"
 modifier = ["modkey"]
 key = "l"
+
+[[keybind]]
+command = "FocusWorkspaceNext"
+modifier = ["modkey"]
+key = "w"
 
 [[keybind]]
 command = "FocusWorkspacePrevious"
