@@ -1,6 +1,7 @@
 local lsp = require'lspconfig'
 local lsp_status = require('lsp-status')
 
+-- Log is in .local/state/nvim
 -- local log = require 'vim.lsp.log'
 -- log.set_level(2)
 
@@ -105,7 +106,7 @@ lsp.elmls.setup {
         elmLS = {
             disableElmLSDiagnostics = false,
         }
-    };
+    }
 }
 
 lsp.hls.setup {

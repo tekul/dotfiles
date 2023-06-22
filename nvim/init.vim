@@ -140,6 +140,7 @@ nnoremap <silent> <leader>bn :bn<CR>
 nnoremap <silent> <leader>bp :bp<CR>
 nnoremap <silent> <leader>bd :bd<CR>
 nnoremap <silent> <leader>b# :b#<CR>
+nnoremap <silent> <leader>ba :b#\|bd# <CR>
 
 " Quickfix/Local list navigation
 nnoremap <silent> <leader>cn :cnext<CR>zz
@@ -229,7 +230,6 @@ let g:nvim_tree_indent_markers = 1
 " so an alternative is needed.
 "nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> gi    <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
@@ -240,7 +240,7 @@ nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 " rust-analyzer does not yet support goto declaration
 " re-mapped `gd` to definition
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
-"nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> gD    <cmd>lua vim.lsp.buf.definition(); vim.api.nvim_command('bd#')<CR>
 "
 
 " Formatting
