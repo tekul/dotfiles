@@ -1,3 +1,8 @@
+" Disable netrw as recommended by nvim-tree
+lua << EOF
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+EOF
 
 call plug#begin('~/.vim/plugged')
 
@@ -49,11 +54,11 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'rafamadriz/friendly-snippets'
+Plug 'nvim-tree/nvim-tree.lua'
 
 Plug 'vimwiki/vimwiki'
 
 call plug#end()
-
 
 syntax enable
 set showmatch
@@ -103,7 +108,7 @@ set notimeout
 
 " Show whitespace, line numbers
 nnoremap <leader>il :set invlist<CR>
-nnoremap <leader>nn :set invnumber<CR>
+nnoremap <leader>in :set invnumber<CR>
 nnoremap <leader>rn :set invrelativenumber<CR>
 
 " Recording playback
@@ -211,6 +216,13 @@ luafile ~/.config/nvim/completion.lua
 luafile ~/.config/nvim/lsp-setup.lua
 
 luafile ~/.config/nvim/nvim-autopairs.lua
+
+luafile ~/.config/nvim/nvim-tree.lua
+
+nnoremap <silent><leader>nn :NvimTreeToggle<CR>
+nnoremap <silent><leader>nf :NvimTreeFindFile<CR>
+
+let g:nvim_tree_indent_markers = 1
 
 " Code navigation shortcuts as found in :help lsp
 " This overwrites the mapping for jumping to a tag in help files
