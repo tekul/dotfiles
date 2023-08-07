@@ -1,0 +1,11 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+set -o vi
+export EDITOR=nvim
+
+. ~/dotfiles/aliases
+
+# PS1='[\u@\h \W]\$ '
+PS1='\[\e[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ \[\e[m\]'
+
