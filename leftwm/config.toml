@@ -60,7 +60,7 @@ key = "p"
 
 [[keybind]]
 command = "Execute"
-value = "urxvtc -e /usr/bin/fish"
+value = "alacritty -e /usr/bin/fish"
 modifier = ["modkey", "Shift"]
 key = "Return"
 

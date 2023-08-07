@@ -19,8 +19,6 @@ setxkbmap -layout us,gb -option grp:shifts_toggle
 
 nvidia-settings --load-config-only &
 
-urxvtd -q -f -o
-
 fcitx
 
 export GTK_IM_MODULE=fcitx
@@ -30,5 +28,4 @@ export DefaultIMModule=fcitx
 
 dunst &
 
-#exec xmonad
 exec leftwm
