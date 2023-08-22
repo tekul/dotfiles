@@ -12,7 +12,7 @@ if [ -x "$(command -v picom)" ]; then
   picom &> /dev/null &
 fi
 
-leftwm-command "LoadTheme $SCRIPTPATH/theme.toml"
+leftwm-command "LoadTheme $SCRIPTPATH/theme.ron"
 
 #set background
 #if [ -x "$(command -v feh)" ]; then
