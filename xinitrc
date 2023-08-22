@@ -28,4 +28,7 @@ export DefaultIMModule=fcitx
 
 dunst &
 
+dvi_name="$(xrandr | grep -Po '(DVI).+(?= connected)')"
+xrandr --verbose --output "${dvi_name}" --primary
+
 exec leftwm
