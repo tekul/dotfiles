@@ -3,7 +3,6 @@
 if [ -e /home/tekul/.nix-profile/etc/profile.d/nix.sh ]; then . /home/tekul/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 . "$HOME/.cargo/env"
 
-export PATH="$PATH:$HOME/tools/node-v18.12.1-linux-x64/bin"
 export RUSTY_V8_MIRROR="$HOME/code/rusty_v8"
 
 export FLYCTL_INSTALL="/home/tekul/.fly"
