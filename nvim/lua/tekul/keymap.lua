@@ -2,11 +2,19 @@ vim.g.mapleader = " "
 
 local keymap = vim.keymap
 
+-- Ctrl-s save
+keymap.set("i", "<C-s>", "<ESC>:w<CR>", { desc = "Save buffer" })
+keymap.set("n", "<C-s>", ":w<CR>", { desc = "Save buffer" })
+
+
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
 keymap.set("n", "<ESC>", ":noh<CR>", { desc = "Clear highlights", silent = true })
 
 keymap.set("n", ";", ":")
+
+-- Send deleted chars to 'black hole' register
+keymap.set("n", "x", "\"_x")
 
 keymap.set("n", "<leader>rr", "<cmd>registers<CR>", { desc = "Show registers "})
 
