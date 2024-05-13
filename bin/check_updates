@@ -1,0 +1,19 @@
+#!/bin/bash
+
+last_update=$(~/dotfiles/bin/last_update)
+
+# If no update in the last 8 hours list updateable packages
+if (( last_update > (8*3600))); then
+    for ((i=1;i<=2;i++)); do
+        connectivity=$(nmcli networking connectivity)
+        [ "$connectivity" = "full" ] && break;
+        # echo "Checking connectivity: $connectivity"
+        sleep 2s
+    done
+    connectivity=$(nmcli networking connectivity)
+    [ "$connectivity" = "full" ] || exit;
+    updates=$(checkupdates)
+    [ "$?" = "0" ] && echo -e "\nUpdates available: ${updates}"
+    # echo "$(checkupdates | wc -l) packages can be updated"
+fi
+

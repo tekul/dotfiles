@@ -8,5 +8,6 @@ if status is-interactive
     bind --mode insert --sets-mode default jk repaint
     source ~/dotfiles/aliases
     thefuck --alias | source
+    ~/dotfiles/bin/check_updates &
 end
 
