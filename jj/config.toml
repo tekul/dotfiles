@@ -1,0 +1,73 @@
+[user]
+name = "Luke Taylor"
+email = "tekul@pm.me"
+
+[ui]
+default-command = "log"
+
+[aliases]
+a = ["describe", "@-"]
+aa = ["amend"]
+bc = ["branch", "create", "-r", "@-"]
+bd = ["branch", "delete"]
+bs = ["branch", "set", "-r", "@-"]
+bt = ["branch", "track"]
+gf = ["git", "fetch"]
+gp = ["git", "push"]
+ld = ["log", "--template", "builtin_log_detailed"]
+lda = ["log", "-r", "::", "--template", "builtin_log_detailed"]
+n = ["next"]
+p = ["prev"]
+r = ["rebase", "-d", "main", "--skip-emptied"]
+s = ["show", "@-"]
+sq = ["squash"]
+"sq-" = ["squash", "-r", "@-"]
+
+[templates]
+log = 'builtin_log_comfortable'
+
+[template-aliases]
+fish_vcs_prompt = '''
+        surround(
+            " (",
+            ")",
+            separate(
+                " ",
+                branches.join(", "),
+                change_id.shortest(),
+                commit_id.shortest(),
+                if(conflict, "(conflict)"),
+                if(empty, "(empty)"),
+                if(divergent, "(divergent)"),
+                if(hidden, "(hidden)"),
+            )
+        )
+'''
+fish_vcs_prompt_verbose = '''
+        surround(
+            " (",
+            ")",
+            separate(
+                " ",
+                branches.join(", "),
+                coalesce(
+                    surround(
+                        "\"",
+                        "\"",
+                        if(
+                            description.first_line().substr(0, 24).starts_with(description.first_line()),
+                            description.first_line().substr(0, 24),
+                            description.first_line().substr(0, 23) ++ "…"
+                        )
+                    ),
+                    "(no description set)"
+                ),
+                change_id.shortest(),
+                commit_id.shortest(),
+                if(conflict, "(conflict)"),
+                if(empty, "(empty)"),
+                if(divergent, "(divergent)"),
+                if(hidden, "(hidden)"),
+            )
+        )
+'''
