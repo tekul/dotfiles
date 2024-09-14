@@ -43,7 +43,7 @@
         (command: DecreaseMainWidth, value: "5", modifier: ["modkey", "Shift"], key: "h"),
         (command: FocusWindowDown, value: "", modifier: ["modkey"], key: "Tab"),
         (command: Execute, value: "dmenu_run", modifier: ["modkey"], key: "p"),
-        (command: Execute, value: "alacritty -e /usr/bin/fish", modifier: ["modkey", "Shift"], key: "Return"),
+        (command: Execute, value: "wezterm", modifier: ["modkey", "Shift"], key: "Return"),
         (command: CloseWindow, value: "", modifier: ["modkey", "Shift"], key: "q"),
         (command: SoftReload, value: "", modifier: ["modkey", "Shift"], key: "r"),
         (command: Execute, value: "loginctl kill-session $XDG_SESSION_ID", modifier: ["modkey", "Shift"], key: "x"),

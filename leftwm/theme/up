@@ -24,5 +24,7 @@ hsetroot -solid '#222222'
 
 polybar &
 
-alacritty -e /usr/bin/fish &
+#alacritty -e /usr/bin/fish &
+
+wezterm
 
