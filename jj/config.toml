@@ -33,7 +33,7 @@ fish_vcs_prompt = '''
             ")",
             separate(
                 " ",
-                branches.join(", "),
+                bookmarks.join(", "),
                 change_id.shortest(),
                 commit_id.shortest(),
                 if(conflict, "(conflict)"),
@@ -49,7 +49,7 @@ fish_vcs_prompt_verbose = '''
             ")",
             separate(
                 " ",
-                branches.join(", "),
+                bookmarks.join(", "),
                 coalesce(
                     surround(
                         "\"",
