@@ -29,6 +29,7 @@
         ( window_class: "Navigator", spawn_on_tag: 2 ),
         ( window_class: "pinentry-gtk-2", spawn_floating: true ),
         ( window_class: "discord", spawn_on_tag: 5 ),
+        ( window_title: "Password Required.*", spawn_floating: true, spawn_as_type: Normal),
     ],
     disable_current_tag_swap: false,
     disable_tile_drag: false,
