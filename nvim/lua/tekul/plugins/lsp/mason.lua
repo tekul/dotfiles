@@ -23,7 +23,7 @@ return {
             -- list of servers for mason to install
             ensure_installed = {
                 "rust_analyzer",
-                "tsserver",
+                "ts_ls",
                 "html",
                 "cssls",
                 "tailwindcss",
