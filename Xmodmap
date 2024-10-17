@@ -1,9 +1,9 @@
-! Map caps lock to ctrl instead
-clear lock
-clear control
-clear mod_1
-clear mod_4
-keycode 66 = Control_L
-add control = Control_L Control_R
-add mod_1 = Alt_L Alt_R Super_L
-add mod_4 = Super_R
+! Swap Caps_Lock and Control_L
+! From xmodmap man page
+!
+remove Lock = Caps_Lock
+remove Control = Control_L
+keysym Control_L = Caps_Lock
+keysym Caps_Lock = Control_L
+add Lock = Caps_Lock
+add Control = Control_L

@@ -19,12 +19,12 @@ setxkbmap -layout us,gb -option grp:shifts_toggle
 
 nvidia-settings --load-config-only &
 
-fcitx
+# fcitx
 
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS="@im=fcitx"
-export DefaultIMModule=fcitx
+# export GTK_IM_MODULE=fcitx
+# export QT_IM_MODULE=fcitx
+# export XMODIFIERS="@im=fcitx"
+# export DefaultIMModule=fcitx
 
 dunst &
 
